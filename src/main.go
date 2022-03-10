@@ -1,6 +1,9 @@
 package main
 
 import (
+	"io"
+	"os"
+
 	"examples.com/controller"
 	"examples.com/middlewares"
 	"examples.com/service"
@@ -12,7 +15,12 @@ var (
 	videoController controller.VideoController = controller.New(videoService)
 )
 
+func setUpLog() {
+	f, _ := os.Create("gin.log")
+	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
+}
 func main() {
+	setUpLog()
 	server := gin.New()
 	server.Use(gin.Recovery(), middlewares.Logger())
 
