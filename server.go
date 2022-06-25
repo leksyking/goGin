@@ -31,11 +31,20 @@ func main() {
 
 	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump())
 
-	server.GET("/videos", func(ctx *gin.Context) {
-		ctx.JSON(200, videoController.FindAll())
-	})
-	server.POST("/videos", func(ctx *gin.Context) {
-		ctx.JSON(200, videoController.Save(ctx))
-	})
+	apiRoutes := server.Group("/api")
+	{
+		apiRoutes.GET("/videos", func(ctx *gin.Context) {
+			ctx.JSON(200, videoController.FindAll())
+		})
+		apiRoutes.POST("/videos", func(ctx *gin.Context) {
+			ctx.JSON(200, videoController.Save(ctx))
+		})
+	}
+
+	viewRoutes := server.Group("/view")
+	{
+		viewRoutes.GET("/videos", videoController.ShowAll(ctx))
+	}
+
 	server.Run(":3000")
 }

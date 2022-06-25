@@ -1,6 +1,8 @@
 package controller
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/leksyking/goGin/entity"
 	"github.com/leksyking/goGin/service"
@@ -8,7 +10,8 @@ import (
 
 type VideoController interface {
 	FindAll() []entity.Video
-	Save(ctx *gin.Context) entity.Video
+	Save(*gin.Context) entity.Video
+	ShowAll(*gin.Context)
 }
 
 type controller struct {
@@ -30,4 +33,13 @@ func (c *controller) Save(ctx *gin.Context) entity.Video {
 	ctx.BindJSON(&video)
 	c.service.Save(video)
 	return video
+}
+
+func (c *controller) ShowAll(ctx *gin.Context) {
+	videos := c.service.FindAll()
+	data := gin.H{
+		"title":  "Video Page",
+		"videos": videos,
+	}
+	ctx.HTML(http.StatusOK, "index.html", data)
 }
