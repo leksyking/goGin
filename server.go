@@ -17,13 +17,18 @@ var (
 	videoController controller.VideoController = controller.New(videoService)
 )
 
-func setUpLog() {
+func setUpLogOutput() {
 	f, _ := os.Create("gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
 func main() {
-	setUpLog()
+	setUpLogOutput()
+
 	server := gin.New()
+
+	server.Static("/css", "./template/css")
+	server.LoadHTMLGlob("templates/*.html")
+
 	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump())
 
 	server.GET("/videos", func(ctx *gin.Context) {

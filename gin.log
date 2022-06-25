@@ -2,10 +2,9 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /videos                   --> main.main.func1 (4 handlers)
-[GIN-debug] POST   /videos                   --> main.main.func2 (4 handlers)
+[GIN-debug] GET    /videos                   --> main.main.func1 (5 handlers)
+[GIN-debug] POST   /videos                   --> main.main.func2 (5 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-::1 - [09 Mar 22 16:46 PST] GET /videos 401 0s 
-::1 - [09 Mar 22 16:55 PST] GET /videos 200 0s 
+::1 - [24 Jun 22 22:39 PDT] GET /videos 200 17.3549ms 
