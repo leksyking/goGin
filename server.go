@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"net/http"
 	"os"
 
 	gindump "github.com/tpkeeper/gin-dump"
@@ -37,14 +38,18 @@ func main() {
 			ctx.JSON(200, videoController.FindAll())
 		})
 		apiRoutes.POST("/videos", func(ctx *gin.Context) {
-			ctx.JSON(200, videoController.Save(ctx))
+			if err := videoController.Save(ctx); err != nil {
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+				return
+			}
+			ctx.JSON(http.StatusOK, gin.H{"message": "Video Input is valid"})
 		})
 	}
 
-	viewRoutes := server.Group("/view")
-	{
-		viewRoutes.GET("/videos", videoController.ShowAll(ctx))
-	}
+	//viewRoutes := server.Group("/view")
+	//{
+	//	viewRoutes.GET("/videos", videoController.ShowAll(ctx))
+	//}//
 
 	server.Run(":3000")
 }
