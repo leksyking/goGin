@@ -46,10 +46,10 @@ func main() {
 		})
 	}
 
-	//viewRoutes := server.Group("/view")
-	//{
-	//	viewRoutes.GET("/videos", videoController.ShowAll(ctx))
-	//}//
+	viewRoutes := server.Group("/view")
+	{
+		viewRoutes.GET("/videos", videoController.ShowAll)
+	}
 
 	server.Run(":3000")
 }
