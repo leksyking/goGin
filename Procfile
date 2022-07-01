@@ -1,1 +1,1 @@
-web: bin/go-gin-videos
+web: server.exe
