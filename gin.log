@@ -16,16 +16,3 @@
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-::1 - [26 Jun 22 22:29 PDT] POST /api/videos 400 422.2717ms 
-::1 - [26 Jun 22 22:30 PDT] POST /api/videos 200 26.9976ms 
-::1 - [26 Jun 22 22:31 PDT] GET /view/videos 401 734.637ms 
-::1 - [26 Jun 22 22:32 PDT] GET /view/videos 200 1.5695416s 
-::1 - [26 Jun 22 22:32 PDT] GET /favicon.ico 401 0s 
-::1 - [26 Jun 22 22:32 PDT] GET /favicon.ico 404 17.3941ms 
-::1 - [26 Jun 22 22:32 PDT] GET /view/videos 200 72.107ms 
-::1 - [26 Jun 22 22:32 PDT] GET /api/videos 200 20.7979ms 
-::1 - [26 Jun 22 22:34 PDT] POST /api/videos 200 22.1195ms 
-::1 - [26 Jun 22 22:34 PDT] GET /api/videos 200 26.4697ms 
-::1 - [26 Jun 22 22:34 PDT] GET /view/videos 200 29.0936ms 
-::1 - [26 Jun 22 22:35 PDT] GET /view/videos 200 278.312ms 
-::1 - [26 Jun 22 22:37 PDT] GET /view/videos 200 111.22ms 
