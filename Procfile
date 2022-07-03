@@ -1,1 +1,0 @@
-web: bin/goGin.exe
